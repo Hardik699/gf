@@ -406,24 +406,6 @@ export default function SystemInfo() {
                 Export All Data
               </Button>
             )}
-            {isGoogleSheetsConfigured && assetCount > 0 && (
-              <Button
-                onClick={() => googleAppsScriptSync.manualSync()}
-                className="bg-blue-600 hover:bg-blue-700 text-white flex items-center gap-2"
-              >
-                <RefreshCw className="h-4 w-4" />
-                Sync to Sheets
-              </Button>
-            )}
-            {!isGoogleSheetsConfigured && (
-              <Button
-                onClick={() => navigate("/google-apps-script-config")}
-                className="bg-yellow-600 hover:bg-yellow-700 text-white flex items-center gap-2"
-              >
-                <Settings className="h-4 w-4" />
-                Setup Auto-Sync
-              </Button>
-            )}
             <Badge variant="secondary" className="bg-slate-700 text-slate-300">
               {assetCount} assets | {items.length} categories
             </Badge>
