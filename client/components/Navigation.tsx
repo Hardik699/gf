@@ -24,7 +24,6 @@ import {
   Users,
   Building2,
   LayoutDashboard,
-  FileSpreadsheet,
 } from "lucide-react";
 
 export default function AppNav() {
