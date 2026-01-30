@@ -89,15 +89,6 @@ export default function PCLaptopInfo() {
     ramId2: "",
   });
   const [totalRam, setTotalRam] = useState("0GB");
-  const [isGoogleSheetsConfigured, setIsGoogleSheetsConfigured] =
-    useState(false);
-  const { triggerAutoSync } = useGoogleAppsScriptAutoSync();
-
-  // Check Google Apps Script configuration on load
-  useEffect(() => {
-    const configured = googleAppsScriptSync.isReady();
-    setIsGoogleSheetsConfigured(configured);
-  }, []);
 
   // Helper function to get used IDs for a specific component type
   const getUsedIds = (items: Asset[], field: keyof Asset): string[] => {
