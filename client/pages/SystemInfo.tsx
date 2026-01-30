@@ -18,9 +18,6 @@ import {
   Phone,
   Database,
   Download,
-  RefreshCw,
-  ExternalLink,
-  Settings,
 } from "lucide-react";
 import * as XLSX from "xlsx";
 
