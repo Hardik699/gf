@@ -254,6 +254,17 @@ export default function AppNav() {
                             <Building2 className="h-4 w-4 mr-2" />
                             HR Dashboard
                           </Button>
+                          <Button
+                            variant="outline"
+                            className="w-full justify-start border-slate-600 text-slate-300 hover:bg-slate-700"
+                            onClick={() => {
+                              handleEmployeesManagement();
+                              setIsMobileMenuOpen(false);
+                            }}
+                          >
+                            <Users className="h-4 w-4 mr-2" />
+                            Employees
+                          </Button>
                         </>
                       )}
 
