@@ -23,9 +23,6 @@ import { useNavigate } from "react-router-dom";
 import {
   Edit,
   Download,
-  RefreshCw,
-  ExternalLink,
-  Settings,
 } from "lucide-react";
 import * as XLSX from "xlsx";
 
