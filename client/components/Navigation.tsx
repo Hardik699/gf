@@ -24,7 +24,6 @@ import {
   Users,
   Building2,
   LayoutDashboard,
-  FileSpreadsheet,
 } from "lucide-react";
 
 export default function AppNav() {
@@ -80,8 +79,8 @@ export default function AppNav() {
     navigate("/deshbord");
   };
 
-  const handleGoogleSheetsConfig = () => {
-    navigate("/google-apps-script-config");
+  const handleEmployeesManagement = () => {
+    navigate("/employees");
   };
 
   return (
@@ -141,11 +140,11 @@ export default function AppNav() {
                     <Button
                       variant="outline"
                       size="sm"
-                      onClick={handleGoogleSheetsConfig}
+                      onClick={handleEmployeesManagement}
                       className="border-slate-600 text-slate-300 hover:bg-slate-700 hover:text-white transition-all duration-300"
                     >
-                      <FileSpreadsheet className="h-4 w-4 mr-2" />
-                      Google Sheets
+                      <Users className="h-4 w-4 mr-2" />
+                      Employees
                     </Button>
                   </>
                 )}
@@ -259,12 +258,12 @@ export default function AppNav() {
                             variant="outline"
                             className="w-full justify-start border-slate-600 text-slate-300 hover:bg-slate-700"
                             onClick={() => {
-                              handleGoogleSheetsConfig();
+                              handleEmployeesManagement();
                               setIsMobileMenuOpen(false);
                             }}
                           >
-                            <FileSpreadsheet className="h-4 w-4 mr-2" />
-                            Google Sheets
+                            <Users className="h-4 w-4 mr-2" />
+                            Employees
                           </Button>
                         </>
                       )}

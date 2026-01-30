@@ -5,13 +5,20 @@ import path from "path";
 import { handleDemo } from "./routes/demo";
 import { attachIdentity } from "./middleware/auth";
 import { salariesRouter } from "./routes/salaries";
-import {
-  syncToGoogleSheets,
-  getSpreadsheetInfo,
-} from "./services/googleSheets";
+import { connectDB } from "./db";
+import systemAssetsRouter from "./routes/systemAssets";
+import pcLaptopsRouter from "./routes/pcLaptops";
+import employeesRouter from "./routes/employees";
 
-export function createServer() {
+export async function createServer() {
   const app = express();
+
+  // Connect to MongoDB
+  try {
+    await connectDB();
+  } catch (error) {
+    console.error("Failed to connect to MongoDB:", error);
+  }
 
   // Middleware
   app.use(cors());
@@ -33,9 +40,10 @@ export function createServer() {
   // Salaries API
   app.use("/api/salaries", salariesRouter());
 
-  // Google Sheets API
-  app.post("/api/google-sheets/sync", syncToGoogleSheets);
-  app.get("/api/google-sheets/info", getSpreadsheetInfo);
+  // MongoDB API routes
+  app.use("/api/system-assets", systemAssetsRouter);
+  app.use("/api/pc-laptops", pcLaptopsRouter);
+  app.use("/api/employees", employeesRouter);
 
   return app;
 }
