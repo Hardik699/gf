@@ -29,9 +29,5 @@ export function createServer() {
   // Salaries API
   app.use("/api/salaries", salariesRouter());
 
-  // Google Sheets API
-  app.post("/api/google-sheets/sync", syncToGoogleSheets);
-  app.get("/api/google-sheets/info", getSpreadsheetInfo);
-
   return app;
 }
