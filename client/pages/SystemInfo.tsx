@@ -100,17 +100,11 @@ const items = [
 export default function SystemInfo() {
   const navigate = useNavigate();
   const [assetCount, setAssetCount] = useState(0);
-  const [isGoogleSheetsConfigured, setIsGoogleSheetsConfigured] =
-    useState(false);
 
   useEffect(() => {
     const existing = localStorage.getItem(STORAGE_KEY);
     const assets = existing ? JSON.parse(existing) : [];
     setAssetCount(assets.length);
-
-    // Check Google Apps Script configuration
-    const configured = googleAppsScriptSync.isReady();
-    setIsGoogleSheetsConfigured(configured);
   }, []);
 
   const handleLoadDemo = () => {
