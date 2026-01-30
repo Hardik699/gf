@@ -44,6 +44,7 @@ const App = () => (
           <Route path="/system-info/:slug" element={<SystemInfoDetail />} />
           <Route path="/pc-laptop-info" element={<PCLaptopInfo />} />
           <Route path="/demo-data" element={<DemoDataView />} />
+          <Route path="/employees" element={<EmployeesManagement />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
