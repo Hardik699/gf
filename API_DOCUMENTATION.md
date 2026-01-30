@@ -1,11 +1,14 @@
 # MongoDB API Documentation
 
 ## Overview
+
 All data is now saved to MongoDB. No data is stored locally. The application uses the following MongoDB connection:
+
 - **Connection String**: `mongodb+srv://hardik:Hardik1@infoseum.a4beisu.mongodb.net/?appName=Infoseum`
 - **Database**: Infoseum
 
 ## Base URL
+
 `http://localhost:8080/api`
 
 ---
@@ -13,9 +16,11 @@ All data is now saved to MongoDB. No data is stored locally. The application use
 ## System Assets API
 
 ### Get All System Assets
+
 - **Endpoint**: `GET /system-assets`
 - **Description**: Retrieves all system assets from the database
 - **Response**:
+
 ```json
 {
   "success": true,
@@ -44,21 +49,25 @@ All data is now saved to MongoDB. No data is stored locally. The application use
 ```
 
 ### Get Assets by Category
+
 - **Endpoint**: `GET /system-assets/category/:category`
-- **Parameters**: 
+- **Parameters**:
   - `category`: mouse, keyboard, motherboard, ram, storage, power-supply, headphone, camera, monitor, vonage
 - **Response**: Same structure as above, filtered by category
 
 ### Get Single Asset
+
 - **Endpoint**: `GET /system-assets/:id`
-- **Parameters**: 
+- **Parameters**:
   - `id`: MongoDB ObjectId of the asset
 - **Response**: Single asset object
 
 ### Create System Asset
+
 - **Endpoint**: `POST /system-assets`
 - **Method**: POST
 - **Body**:
+
 ```json
 {
   "category": "mouse|keyboard|motherboard|ram|storage|power-supply|headphone|camera|monitor|vonage",
@@ -79,16 +88,19 @@ All data is now saved to MongoDB. No data is stored locally. The application use
 ```
 
 ### Update System Asset
+
 - **Endpoint**: `PUT /system-assets/:id`
-- **Parameters**: 
+- **Parameters**:
   - `id`: MongoDB ObjectId
 - **Body**: Same as Create (partial update supported)
 
 ### Delete System Asset
+
 - **Endpoint**: `DELETE /system-assets/:id`
-- **Parameters**: 
+- **Parameters**:
   - `id`: MongoDB ObjectId
-- **Response**: 
+- **Response**:
+
 ```json
 {
   "success": true,
@@ -101,9 +113,11 @@ All data is now saved to MongoDB. No data is stored locally. The application use
 ## PC/Laptop Configuration API
 
 ### Get All PC/Laptops
+
 - **Endpoint**: `GET /pc-laptops`
 - **Description**: Retrieves all PC/Laptop configurations with populated asset details
 - **Response**:
+
 ```json
 {
   "success": true,
@@ -127,14 +141,17 @@ All data is now saved to MongoDB. No data is stored locally. The application use
 ```
 
 ### Get Single PC/Laptop
+
 - **Endpoint**: `GET /pc-laptops/:id`
-- **Parameters**: 
+- **Parameters**:
   - `id`: MongoDB ObjectId
 - **Response**: Single PC/Laptop configuration with populated assets
 
 ### Create PC/Laptop Configuration
+
 - **Endpoint**: `POST /pc-laptops`
 - **Body**:
+
 ```json
 {
   "mouseId": "ObjectId (optional)",
@@ -150,14 +167,16 @@ All data is now saved to MongoDB. No data is stored locally. The application use
 ```
 
 ### Update PC/Laptop Configuration
+
 - **Endpoint**: `PUT /pc-laptops/:id`
-- **Parameters**: 
+- **Parameters**:
   - `id`: MongoDB ObjectId
 - **Body**: Same as Create (partial update supported)
 
 ### Delete PC/Laptop Configuration
+
 - **Endpoint**: `DELETE /pc-laptops/:id`
-- **Parameters**: 
+- **Parameters**:
   - `id`: MongoDB ObjectId
 
 ---
@@ -165,9 +184,11 @@ All data is now saved to MongoDB. No data is stored locally. The application use
 ## Employees API
 
 ### Get All Employees
+
 - **Endpoint**: `GET /employees`
 - **Description**: Retrieves all employees with their assigned PC/Laptop and assets
 - **Response**:
+
 ```json
 {
   "success": true,
@@ -190,14 +211,17 @@ All data is now saved to MongoDB. No data is stored locally. The application use
 ```
 
 ### Get Single Employee
+
 - **Endpoint**: `GET /employees/:id`
-- **Parameters**: 
+- **Parameters**:
   - `id`: MongoDB ObjectId
 - **Response**: Single employee with populated PC/Laptop and assets
 
 ### Create Employee
+
 - **Endpoint**: `POST /employees`
 - **Body**:
+
 ```json
 {
   "name": "string (required)",
@@ -212,21 +236,25 @@ All data is now saved to MongoDB. No data is stored locally. The application use
 ```
 
 ### Update Employee
+
 - **Endpoint**: `PUT /employees/:id`
-- **Parameters**: 
+- **Parameters**:
   - `id`: MongoDB ObjectId
 - **Body**: Same as Create (partial update supported)
 
 ### Delete Employee
+
 - **Endpoint**: `DELETE /employees/:id`
-- **Parameters**: 
+- **Parameters**:
   - `id`: MongoDB ObjectId
 
 ### Assign PC/Laptop to Employee
+
 - **Endpoint**: `POST /employees/:id/assign-pc-laptop`
-- **Parameters**: 
+- **Parameters**:
   - `id`: MongoDB ObjectId (Employee ID)
 - **Body**:
+
 ```json
 {
   "pcLaptopId": "ObjectId"
@@ -234,10 +262,12 @@ All data is now saved to MongoDB. No data is stored locally. The application use
 ```
 
 ### Assign Assets to Employee
+
 - **Endpoint**: `POST /employees/:id/assign-assets`
-- **Parameters**: 
+- **Parameters**:
   - `id`: MongoDB ObjectId (Employee ID)
 - **Body**:
+
 ```json
 {
   "assetIds": ["ObjectId1", "ObjectId2", "ObjectId3"]
@@ -249,6 +279,7 @@ All data is now saved to MongoDB. No data is stored locally. The application use
 ## Data Models
 
 ### SystemAsset
+
 - **Collection**: `systemassets`
 - **Fields**:
   - `_id`: ObjectId (auto-generated)
@@ -270,6 +301,7 @@ All data is now saved to MongoDB. No data is stored locally. The application use
   - `updatedAt`: Date (auto)
 
 ### PCLaptop
+
 - **Collection**: `pclaptops`
 - **Fields**:
   - `_id`: ObjectId (auto-generated)
@@ -286,6 +318,7 @@ All data is now saved to MongoDB. No data is stored locally. The application use
   - `updatedAt`: Date (auto)
 
 ### Employee
+
 - **Collection**: `employees`
 - **Fields**:
   - `_id`: ObjectId (auto-generated)

@@ -43,8 +43,9 @@ const employeeSchema = new Schema<IEmployee>(
       },
     ],
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export const Employee =
-  mongoose.models.Employee || mongoose.model<IEmployee>("Employee", employeeSchema);
+  mongoose.models.Employee ||
+  mongoose.model<IEmployee>("Employee", employeeSchema);

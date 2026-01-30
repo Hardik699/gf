@@ -20,10 +20,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useNavigate } from "react-router-dom";
-import {
-  Edit,
-  Download,
-} from "lucide-react";
+import { Edit, Download } from "lucide-react";
 import * as XLSX from "xlsx";
 
 type Asset = {

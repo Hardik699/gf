@@ -45,7 +45,9 @@ export const getPCLaptop: RequestHandler = async (req, res) => {
       "ramId2",
     ]);
     if (!pcLaptop) {
-      return res.status(404).json({ success: false, message: "PC/Laptop not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: "PC/Laptop not found" });
     }
     res.json({ success: true, data: pcLaptop });
   } catch (error) {
@@ -60,7 +62,17 @@ export const getPCLaptop: RequestHandler = async (req, res) => {
 // Create PC/Laptop
 export const createPCLaptop: RequestHandler = async (req, res) => {
   try {
-    const { mouseId, keyboardId, motherboardId, cameraId, headphoneId, powerSupplyId, storageId, ramId, ramId2 } = req.body;
+    const {
+      mouseId,
+      keyboardId,
+      motherboardId,
+      cameraId,
+      headphoneId,
+      powerSupplyId,
+      storageId,
+      ramId,
+      ramId2,
+    } = req.body;
 
     const pcLaptop = new PCLaptop({
       mouseId,
@@ -101,7 +113,9 @@ export const createPCLaptop: RequestHandler = async (req, res) => {
 export const updatePCLaptop: RequestHandler = async (req, res) => {
   try {
     const { id } = req.params;
-    const pcLaptop = await PCLaptop.findByIdAndUpdate(id, req.body, { new: true }).populate([
+    const pcLaptop = await PCLaptop.findByIdAndUpdate(id, req.body, {
+      new: true,
+    }).populate([
       "mouseId",
       "keyboardId",
       "motherboardId",
@@ -113,7 +127,9 @@ export const updatePCLaptop: RequestHandler = async (req, res) => {
       "ramId2",
     ]);
     if (!pcLaptop) {
-      return res.status(404).json({ success: false, message: "PC/Laptop not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: "PC/Laptop not found" });
     }
     res.json({ success: true, data: pcLaptop });
   } catch (error) {
@@ -131,7 +147,9 @@ export const deletePCLaptop: RequestHandler = async (req, res) => {
     const { id } = req.params;
     const pcLaptop = await PCLaptop.findByIdAndDelete(id);
     if (!pcLaptop) {
-      return res.status(404).json({ success: false, message: "PC/Laptop not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: "PC/Laptop not found" });
     }
     res.json({ success: true, message: "PC/Laptop deleted successfully" });
   } catch (error) {

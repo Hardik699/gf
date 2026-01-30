@@ -38,7 +38,9 @@ export const getAsset: RequestHandler = async (req, res) => {
     const { id } = req.params;
     const asset = await SystemAsset.findById(id);
     if (!asset) {
-      return res.status(404).json({ success: false, message: "Asset not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: "Asset not found" });
     }
     res.json({ success: true, data: asset });
   } catch (error) {
@@ -53,10 +55,13 @@ export const getAsset: RequestHandler = async (req, res) => {
 // Create system asset
 export const createAsset: RequestHandler = async (req, res) => {
   try {
-    const { category, serialNumber, vendorName, companyName, ...rest } = req.body;
+    const { category, serialNumber, vendorName, companyName, ...rest } =
+      req.body;
 
     if (!category) {
-      return res.status(400).json({ success: false, message: "Category is required" });
+      return res
+        .status(400)
+        .json({ success: false, message: "Category is required" });
     }
 
     const asset = new SystemAsset({
@@ -82,9 +87,13 @@ export const createAsset: RequestHandler = async (req, res) => {
 export const updateAsset: RequestHandler = async (req, res) => {
   try {
     const { id } = req.params;
-    const asset = await SystemAsset.findByIdAndUpdate(id, req.body, { new: true });
+    const asset = await SystemAsset.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
     if (!asset) {
-      return res.status(404).json({ success: false, message: "Asset not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: "Asset not found" });
     }
     res.json({ success: true, data: asset });
   } catch (error) {
@@ -102,7 +111,9 @@ export const deleteAsset: RequestHandler = async (req, res) => {
     const { id } = req.params;
     const asset = await SystemAsset.findByIdAndDelete(id);
     if (!asset) {
-      return res.status(404).json({ success: false, message: "Asset not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: "Asset not found" });
     }
     res.json({ success: true, message: "Asset deleted successfully" });
   } catch (error) {

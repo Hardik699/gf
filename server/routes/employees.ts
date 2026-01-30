@@ -28,7 +28,9 @@ export const getEmployee: RequestHandler = async (req, res) => {
       .populate("pcLaptopId")
       .populate("assignedAssets");
     if (!employee) {
-      return res.status(404).json({ success: false, message: "Employee not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: "Employee not found" });
     }
     res.json({ success: true, data: employee });
   } catch (error) {
@@ -43,10 +45,21 @@ export const getEmployee: RequestHandler = async (req, res) => {
 // Create employee
 export const createEmployee: RequestHandler = async (req, res) => {
   try {
-    const { name, email, phone, position, department, employeeId, pcLaptopId, assignedAssets } = req.body;
+    const {
+      name,
+      email,
+      phone,
+      position,
+      department,
+      employeeId,
+      pcLaptopId,
+      assignedAssets,
+    } = req.body;
 
     if (!name || !email) {
-      return res.status(400).json({ success: false, message: "Name and email are required" });
+      return res
+        .status(400)
+        .json({ success: false, message: "Name and email are required" });
     }
 
     const employee = new Employee({
@@ -61,7 +74,9 @@ export const createEmployee: RequestHandler = async (req, res) => {
     });
 
     const savedEmployee = await employee.save();
-    const populatedEmployee = await savedEmployee.populate("pcLaptopId").populate("assignedAssets");
+    const populatedEmployee = await savedEmployee
+      .populate("pcLaptopId")
+      .populate("assignedAssets");
 
     res.status(201).json({ success: true, data: populatedEmployee });
   } catch (error) {
@@ -77,11 +92,15 @@ export const createEmployee: RequestHandler = async (req, res) => {
 export const updateEmployee: RequestHandler = async (req, res) => {
   try {
     const { id } = req.params;
-    const employee = await Employee.findByIdAndUpdate(id, req.body, { new: true })
+    const employee = await Employee.findByIdAndUpdate(id, req.body, {
+      new: true,
+    })
       .populate("pcLaptopId")
       .populate("assignedAssets");
     if (!employee) {
-      return res.status(404).json({ success: false, message: "Employee not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: "Employee not found" });
     }
     res.json({ success: true, data: employee });
   } catch (error) {
@@ -99,7 +118,9 @@ export const deleteEmployee: RequestHandler = async (req, res) => {
     const { id } = req.params;
     const employee = await Employee.findByIdAndDelete(id);
     if (!employee) {
-      return res.status(404).json({ success: false, message: "Employee not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: "Employee not found" });
     }
     res.json({ success: true, message: "Employee deleted successfully" });
   } catch (error) {
@@ -120,13 +141,15 @@ export const assignPCLaptop: RequestHandler = async (req, res) => {
     const employee = await Employee.findByIdAndUpdate(
       id,
       { pcLaptopId },
-      { new: true }
+      { new: true },
     )
       .populate("pcLaptopId")
       .populate("assignedAssets");
 
     if (!employee) {
-      return res.status(404).json({ success: false, message: "Employee not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: "Employee not found" });
     }
 
     res.json({ success: true, data: employee });
@@ -148,13 +171,15 @@ export const assignAssets: RequestHandler = async (req, res) => {
     const employee = await Employee.findByIdAndUpdate(
       id,
       { assignedAssets: assetIds },
-      { new: true }
+      { new: true },
     )
       .populate("pcLaptopId")
       .populate("assignedAssets");
 
     if (!employee) {
-      return res.status(404).json({ success: false, message: "Employee not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: "Employee not found" });
     }
 
     res.json({ success: true, data: employee });

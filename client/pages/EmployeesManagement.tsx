@@ -146,7 +146,9 @@ export default function EmployeesManagement() {
             <h1 className="text-3xl font-bold text-white mb-2">
               Employees Management
             </h1>
-            <p className="text-slate-400">Manage employees and their assignments</p>
+            <p className="text-slate-400">
+              Manage employees and their assignments
+            </p>
           </div>
           <Button
             onClick={() => navigate("/")}
@@ -288,7 +290,10 @@ export default function EmployeesManagement() {
               <CardTitle className="text-white flex items-center space-x-2">
                 <Users className="h-5 w-5 text-green-400" />
                 <span>Employees</span>
-                <Badge variant="secondary" className="bg-slate-700 text-slate-300">
+                <Badge
+                  variant="secondary"
+                  className="bg-slate-700 text-slate-300"
+                >
                   {employees.length}
                 </Badge>
               </CardTitle>
@@ -298,7 +303,9 @@ export default function EmployeesManagement() {
             </CardHeader>
             <CardContent>
               {loading && !employees.length ? (
-                <p className="text-slate-400 text-center py-8">Loading employees...</p>
+                <p className="text-slate-400 text-center py-8">
+                  Loading employees...
+                </p>
               ) : employees.length === 0 ? (
                 <div className="text-center py-8">
                   <Users className="h-12 w-12 text-slate-600 mx-auto mb-4" />
@@ -312,10 +319,16 @@ export default function EmployeesManagement() {
                       className="flex items-center justify-between p-3 bg-slate-800/30 rounded-lg border border-slate-700"
                     >
                       <div className="flex-1">
-                        <p className="text-white font-medium">{employee.name}</p>
-                        <p className="text-slate-400 text-sm">{employee.email}</p>
+                        <p className="text-white font-medium">
+                          {employee.name}
+                        </p>
+                        <p className="text-slate-400 text-sm">
+                          {employee.email}
+                        </p>
                         {employee.position && (
-                          <p className="text-slate-500 text-xs">{employee.position}</p>
+                          <p className="text-slate-500 text-xs">
+                            {employee.position}
+                          </p>
                         )}
                       </div>
                       <Button

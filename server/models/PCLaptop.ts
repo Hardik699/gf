@@ -53,8 +53,9 @@ const pcLaptopSchema = new Schema<IPCLaptop>(
       ref: "SystemAsset",
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export const PCLaptop =
-  mongoose.models.PCLaptop || mongoose.model<IPCLaptop>("PCLaptop", pcLaptopSchema);
+  mongoose.models.PCLaptop ||
+  mongoose.model<IPCLaptop>("PCLaptop", pcLaptopSchema);

@@ -55,7 +55,7 @@ const systemAssetSchema = new Schema<ISystemAsset>(
     vonageExtCode: String,
     vonagePassword: String,
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export const SystemAsset =
